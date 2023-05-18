@@ -7,6 +7,10 @@ button.addEventListener('click', userPrompt);
 let userInput = 16
 createGrid();
 
+for (square of gridSquares) {
+    square.addEventListener('mouseover', hover)
+}
+
 function userPrompt() {
     userInput = prompt("How many squares wide/high would you like?")
     if (userInput > 100 || userInput < 0) {
@@ -14,21 +18,13 @@ function userPrompt() {
     } else {
         removeElementsByClassName("gridSquare");
         removeElementsByClassName("newContainer");
-        console.log(gridSquares);
         createGrid();
         for (square of gridSquares) {
             square.addEventListener('mouseover', hover)
         }
-        
     }
 }
 
-function removeElementsByClassName(className) {
-    const elements = document.getElementsByClassName(className);
-    while(elements.length > 0) {
-        elements[0].parentNode.removeChild(elements[0]);
-    }
-}
 
 function createRow() {
     let newContainer = document.createElement('div');
@@ -40,19 +36,25 @@ function createRow() {
         newDiv.className = "gridSquare";
         newContainer.appendChild(newDiv);
     }
-    
 
 }
+
 function createGrid() {
     for (let j = 0; j < userInput; j++) {
         createRow();
     }
 }
+
+function removeElementsByClassName(className) {
+    const elements = document.getElementsByClassName(className);
+    while(elements.length > 0) {
+        elements[0].parentNode.removeChild(elements[0]);
+    }
+}
+
 function hover(e) {
     e.target.style.backgroundColor = "grey";    
 }
 
-for (square of gridSquares) {
-    square.addEventListener('mouseover', hover)
-}
+
 
