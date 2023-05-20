@@ -8,7 +8,8 @@ blackBtn.addEventListener('click', blackGrid);
 let rgbBtn = document.querySelector('#rgbBtn');
 rgbBtn.addEventListener('click', rgbGrid)
 
-let boardColor
+let boardColor;
+let opacity = 0;
 blackGrid();
 
 let userInput = 16
@@ -61,13 +62,18 @@ function removeElementsByClassName(className) {
 
 function hover(e) {
         e.target.style.backgroundColor = `${boardColor}`;
-        if (boardColor != 'black') {
+        if (boardColor !== 'black') {
             rgbGrid();
+        } else {
+            opacityBlack();
+            blackGrid();
+            e.target.style.opacity = `${opacity}`;
+            
         }
 }
 
 function blackGrid() {
-    boardColor = 'black';
+    boardColor = `black`;
 }
 
 function rgbGrid() {
@@ -77,5 +83,13 @@ function rgbGrid() {
 function rgbRandom () {
     for (square of gridSquares) {
         return Math.floor(Math.random() * 255);
+    }
+}
+
+function opacityBlack () {
+    if (boardColor !== 'black' || opacity > 1) {
+        opacity = 1;
+    } else {
+        opacity = opacity + 0.1;
     }
 }
