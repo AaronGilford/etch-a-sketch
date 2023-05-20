@@ -1,8 +1,15 @@
 let container = document.querySelector('.container');
 let gridSquares = document.getElementsByClassName('gridSquare');
 
-let button = document.querySelector('button');
-button.addEventListener('click', userPrompt);
+let promptBtn = document.querySelector('#promptBtn');
+promptBtn.addEventListener('click', userPrompt);
+let blackBtn = document.querySelector('#blackBtn');
+blackBtn.addEventListener('click', blackGrid);
+let rgbBtn = document.querySelector('#rgbBtn');
+rgbBtn.addEventListener('click', rgbGrid)
+
+let boardColor
+blackGrid();
 
 let userInput = 16
 createGrid();
@@ -53,8 +60,22 @@ function removeElementsByClassName(className) {
 }
 
 function hover(e) {
-    e.target.style.backgroundColor = "grey";    
+        e.target.style.backgroundColor = `${boardColor}`;
+        if (boardColor != 'black') {
+            rgbGrid();
+        }
 }
 
+function blackGrid() {
+    boardColor = 'black';
+}
 
+function rgbGrid() {
+    boardColor = `rgb(${rgbRandom()}, ${rgbRandom()}, ${rgbRandom()})`;
+}
 
+function rgbRandom () {
+    for (square of gridSquares) {
+        return Math.floor(Math.random() * 255);
+    }
+}
