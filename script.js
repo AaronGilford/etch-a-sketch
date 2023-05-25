@@ -33,7 +33,6 @@ function userPrompt() {
     }
 }
 
-
 function createRow() {
     let newContainer = document.createElement('div');
     newContainer.className = "newContainer";
@@ -64,6 +63,9 @@ function hover(e) {
         e.target.style.backgroundColor = `${boardColor}`;
         if (boardColor !== 'black') {
             rgbGrid();
+            e.target.style.opacity = 1;
+        } else {
+            e.target.style.opacity = +e.target.style.opacity + 0.1;
         }
 }
 
