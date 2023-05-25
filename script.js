@@ -64,11 +64,6 @@ function hover(e) {
         e.target.style.backgroundColor = `${boardColor}`;
         if (boardColor !== 'black') {
             rgbGrid();
-        } else {
-            opacityBlack();
-            blackGrid();
-            e.target.style.opacity = `${opacity}`;
-            
         }
 }
 
@@ -86,26 +81,4 @@ function rgbRandom () {
     }
 }
 
-gridSquare.addEventListener('mouseover', blackGrid);
 
-function opacityBlack (e) {
-    if (boardColor !== 'black' || opacity > 1) {
-        opacity = 1;
-    } else {
-        uniqueId();
-        let targetId = e.target.id;
-        let gridSquare = document.getElementById('targetId')
-        opacity = window.getComputedStyle(gridSquare).getPropertyValue("opacity");
-        console.log(opacity);
-        opacity = opacity + 0.1;
-    }
-}
-
-let unique = 100;
-
-function uniqueId(e) {
-    if (typeof gridSquares.id != 'undefined') {
-        e.target.id = unique;
-        unique++;
-    } else {}
-}
